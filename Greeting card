@@ -1,0 +1,31 @@
+import java.awt.*;
+import javax.swing.*;
+
+public class GreetingCardComponent extends JPanel {
+
+    private String message;
+
+    public GreetingCardComponent(String message) {
+        this.message = message;
+        setPreferredSize(new Dimension(300, 200));
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setColor(Color.WHITE);
+        g2d.fillRect(0, 0, getWidth(), getHeight());
+        g2d.setColor(Color.BLACK);
+        g2d.setFont(new Font("Arial", Font.BOLD, 24));
+        g2d.drawString(message, 50, 100);
+    }
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Greeting Card");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(new GreetingCardComponent("Hello, World!"));
+        frame.pack();
+        frame.setVisible(true);
+    }
+}
